@@ -1,0 +1,15 @@
+===== SETUP CONFIGURATION REPORT =====
+Build Name: Gaming Rig 2026
+Components:
+ - AMD Ryzen 7 7800X3D (CPU) - $389.0 [AM5]
+ - B650 Gaming WiFi (Motherboard) - $179.99 [AM5]
+ - NVIDIA RTX 4070 Super (GPU) - $599.99
+ - 32GB DDR5 6000MHz (RAM) - $109.99
+ - 2TB NVMe SSD (Storage) - $129.99
+--------------------------------------
+Base Parts Cost: $1408.96
+Pricing Strategy: Student Special Discount (-10%)
+Calculated Total (Parts): $1268,06
+Services & Extras: PC Setup: Gaming Rig 2026 + Professional Assembly Service ($29.99) + 2-Year Extended Warranty ($49.99)
+FINAL GRAND TOTAL: $1488,94
+======================================

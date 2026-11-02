@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Your Setup</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">BUILD<span>YOUR</span>SETUP</div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#builder">PC Builder</a>
+        <a href="#about">About</a>
+    </nav>
+    <button class="header-btn" onclick="checkBackend()">Backend Status</button>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <p class="subtitle">CUSTOM PC CONFIGURATOR</p>
+        <h1>BUILD YOUR<br><span>PERFECT SETUP</span></h1>
+        <p class="description">
+            Choose your components, check compatibility
+            and create your dream PC.
+        </p>
+        <a href="#builder" class="main-btn">START BUILDING →</a>
+    </div>
+</section>
+
+<section class="builder" id="builder">
+    <h2>Build Your PC</h2>
+    <p class="section-description">Choose your components</p>
+
+    <div class="builder-layout">
+        <div class="components">
+
+            <div class="component-card">
+                <label for="cpu">Processor (CPU)</label>
+                <select id="cpu">
+                    <option value="">Select CPU</option>
+                </select>
+            </div>
+
+            <div class="component-card">
+                <label for="gpu">Graphics Card (GPU)</label>
+                <select id="gpu">
+                    <option value="">Select GPU</option>
+                </select>
+            </div>
+
+            <div class="component-card">
+                <label for="motherboard">Motherboard</label>
+                <select id="motherboard">
+                    <option value="">Select Motherboard</option>
+                </select>
+            </div>
+
+            <div class="component-card">
+                <label for="ram">Memory (RAM)</label>
+                <select id="ram">
+                    <option value="">Select RAM</option>
+                </select>
+            </div>
+
+            <div class="component-card">
+                <label for="storage">Storage</label>
+                <select id="storage">
+                    <option value="">Select Storage</option>
+                </select>
+            </div>
+
+            <div class="component-card">
+                <label for="pricingStrategy">Pricing Strategy</label>
+                <select id="pricingStrategy">
+                    <option value="standard">Standard Price</option>
+                    <option value="student">Student Discount (-10%)</option>
+                    <option value="installment6">Installment Plan (6 Months)</option>
+                    <option value="installment12">Installment Plan (12 Months)</option>
+                </select>
+            </div>
+
+            <button class="calculate-btn" onclick="updateConfiguration()">
+                CALCULATE PRICE
+            </button>
+        </div>
+
+        <div class="summary">
+            <h3>Your Configuration</h3>
+
+            <div class="summary-line">
+                <span>CPU</span>
+                <span id="cpu-price">$0.00</span>
+            </div>
+
+            <div class="summary-line">
+                <span>GPU</span>
+                <span id="gpu-price">$0.00</span>
+            </div>
+
+            <div class="summary-line">
+                <span>Motherboard</span>
+                <span id="motherboard-price">$0.00</span>
+            </div>
+
+            <div class="summary-line">
+                <span>RAM</span>
+                <span id="ram-price">$0.00</span>
+            </div>
+
+            <div class="summary-line">
+                <span>Storage</span>
+                <span id="storage-price">$0.00</span>
+            </div>
+
+            <div class="total">
+                <span>Total Price</span>
+                <h2 id="total">$0.00</h2>
+            </div>
+
+            <div class="summary-line">
+                <span>Pricing Strategy</span>
+                <span id="strategy-name">Standard Price</span>
+            </div>
+
+            <div class="summary-line" id="monthly-row" style="display: none;">
+                <span>Monthly Payment</span>
+                <span id="monthly-payment">$0.00</span>
+            </div>
+
+            <p id="result">Please select all components.</p>
+        </div>
+    </div>
+</section>
+
+<footer id="about">
+    BUILD YOUR SETUP © 2026
+    <p>Custom PC Builder Project</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
