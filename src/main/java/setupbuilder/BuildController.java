@@ -25,7 +25,9 @@ public class BuildController {
             String motherboard,
             String ram,
             String storage,
-            String pricingStrategy
+            String pricingStrategy,
+            boolean assembly,
+            boolean extendedWarranty
     ) {}
 
     public record BuildResponse(
@@ -36,7 +38,9 @@ public class BuildController {
             boolean compatible,
             String message,
             String strategyName,
-            int componentCount
+            int componentCount,
+            double servicesCost,
+            String servicesDescription
     ) {}
 
     @PostMapping("/build")
@@ -95,15 +99,32 @@ public class BuildController {
                 );
         }
 
-        double total;
-        double monthlyPayment = 0;
+        double partsTotal;
 
         if (months > 0) {
-            monthlyPayment = strategy.calculatePrice(baseTotal);
-            total = monthlyPayment * months;
+            double monthlyPartsPayment =
+                    strategy.calculatePrice(baseTotal);
+            partsTotal = monthlyPartsPayment * months;
         } else {
-            total = strategy.calculatePrice(baseTotal);
+            partsTotal = strategy.calculatePrice(baseTotal);
         }
+
+        SetupService service = new BaseSetupService(pcBuild);
+
+        if (request.assembly()) {
+            service = new AssemblyServiceDecorator(service);
+        }
+
+        if (request.extendedWarranty()) {
+            service = new ExtendedWarrantyDecorator(service);
+        }
+
+        double servicesCost = service.getCost() - baseTotal;
+        double total = partsTotal + servicesCost;
+
+        double monthlyPayment = months > 0
+                ? total / months
+                : 0;
 
         String message = compatible
                 ? "CPU and motherboard are compatible!"
@@ -117,7 +138,9 @@ public class BuildController {
                 compatible,
                 message,
                 strategy.getStrategyName(),
-                pcBuild.getComponents().size()
+                pcBuild.getComponents().size(),
+                round(servicesCost),
+                service.getDescription()
         );
     }
 

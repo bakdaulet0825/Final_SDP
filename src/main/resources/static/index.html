@@ -83,6 +83,24 @@
                 </select>
             </div>
 
+            <div class="component-card">
+                <label>Additional Services</label>
+
+                <div class="service-option">
+                    <label for="assembly">
+                        <input type="checkbox" id="assembly">
+                        Professional PC Assembly (+$29.99)
+                    </label>
+                </div>
+
+                <div class="service-option">
+                    <label for="extendedWarranty">
+                        <input type="checkbox" id="extendedWarranty">
+                        2-Year Extended Warranty (+$49.99)
+                    </label>
+                </div>
+            </div>
+
             <button class="calculate-btn" onclick="updateConfiguration()">
                 CALCULATE PRICE
             </button>
@@ -114,6 +132,11 @@
             <div class="summary-line">
                 <span>Storage</span>
                 <span id="storage-price">$0.00</span>
+            </div>
+
+            <div class="summary-line">
+                <span>Additional Services</span>
+                <span id="services-cost">$0.00</span>
             </div>
 
             <div class="total">

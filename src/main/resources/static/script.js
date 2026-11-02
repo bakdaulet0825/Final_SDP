@@ -21,6 +21,7 @@ async function checkBackend() {
         }
 
         const data = await response.json();
+
         result.textContent = data.message;
         result.style.color = "#22c55e";
 
@@ -64,12 +65,20 @@ async function loadComponents() {
         document.getElementById("pricingStrategy")
             .addEventListener("change", updateConfiguration);
 
+        document.getElementById("assembly")
+            .addEventListener("change", updateConfiguration);
+
+        document.getElementById("extendedWarranty")
+            .addEventListener("change", updateConfiguration);
+
         updateConfiguration();
 
     } catch (error) {
         const result = document.getElementById("result");
+
         result.textContent = "Failed to load components!";
         result.style.color = "#ef4444";
+
         console.error(error);
     }
 }
@@ -92,14 +101,24 @@ async function updateConfiguration() {
     selection.pricingStrategy =
         document.getElementById("pricingStrategy").value;
 
+    selection.assembly =
+        document.getElementById("assembly").checked;
+
+    selection.extendedWarranty =
+        document.getElementById("extendedWarranty").checked;
+
     const result = document.getElementById("result");
     const total = document.getElementById("total");
     const monthlyRow = document.getElementById("monthly-row");
+    const servicesElement = document.getElementById("services-cost");
 
     if (componentCategories.some(category => !selection[category])) {
         total.textContent = "$0.00";
+        servicesElement.textContent = "$0.00";
         monthlyRow.style.display = "none";
+
         document.getElementById("strategy-name").textContent = "—";
+
         result.textContent = "Please select all components.";
         result.style.color = "#facc15";
         return;
@@ -124,11 +143,15 @@ async function updateConfiguration() {
 
         total.textContent = "$" + data.total.toFixed(2);
 
+        servicesElement.textContent =
+            "$" + data.servicesCost.toFixed(2);
+
         document.getElementById("strategy-name").textContent =
             data.strategyName;
 
         if (data.monthlyPayment > 0) {
             monthlyRow.style.display = "flex";
+
             document.getElementById("monthly-payment").textContent =
                 "$" + data.monthlyPayment.toFixed(2);
         } else {
@@ -142,9 +165,12 @@ async function updateConfiguration() {
         if (requestId !== latestRequest) return;
 
         total.textContent = "$0.00";
+        servicesElement.textContent = "$0.00";
         monthlyRow.style.display = "none";
+
         result.textContent = "Backend calculation failed!";
         result.style.color = "#ef4444";
+
         console.error(error);
     }
 }
