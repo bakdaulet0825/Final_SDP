@@ -154,6 +154,31 @@
             </div>
 
             <p id="result">Please select all components.</p>
+            <div class="component-card" id="saved-build-panel">
+                <h3>Saved PC Builds</h3>
+
+                <label for="buildName">Build Name</label>
+                <input type="text" id="buildName"
+                       placeholder="Enter build name"
+                       value="My Custom PC">
+
+                <div class="saved-build-actions">
+                    <button type="button" onclick="saveBuild()">SAVE BUILD</button>
+                    <button type="button" onclick="updateSavedBuild()">UPDATE BUILD</button>
+                </div>
+
+                <label for="savedBuilds">Saved Configurations</label>
+                <select id="savedBuilds">
+                    <option value="">Select saved build</option>
+                </select>
+
+                <div class="saved-build-actions">
+                    <button type="button" onclick="loadSavedBuild()">LOAD BUILD</button>
+                    <button type="button" onclick="deleteSavedBuild()">DELETE BUILD</button>
+                </div>
+
+                <p id="storageMessage" role="status"></p>
+            </div>
 
             <div class="component-card" style="margin-top: 25px;">
                 <h3>Build Notifications</h3>

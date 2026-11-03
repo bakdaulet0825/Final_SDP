@@ -212,3 +212,51 @@ footer p {
         padding: 40px 5%;
     }
 }
+
+#saved-build-panel {
+    margin-top: 25px;
+}
+
+#saved-build-panel h3 {
+    margin-bottom: 18px;
+}
+
+#saved-build-panel input[type="text"],
+#saved-build-panel select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 16px;
+    border: 1px solid #475569;
+    border-radius: 8px;
+    background: #1e293b;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.saved-build-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.saved-build-actions button {
+    flex: 1;
+    min-width: 110px;
+    padding: 12px 8px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.saved-build-actions button:hover {
+    background: #1d4ed8;
+}
+
+#storageMessage {
+    margin-top: 12px;
+    font-size: 14px;
+}
