@@ -1,9 +1,9 @@
-
 package com.setupbuilder;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -40,7 +40,8 @@ public class BuildController {
             String strategyName,
             int componentCount,
             double servicesCost,
-            String servicesDescription
+            String servicesDescription,
+            List<String> notifications
     ) {}
 
     @PostMapping("/build")
@@ -59,13 +60,31 @@ public class BuildController {
                 catalogData, "storage", request.storage()
         );
 
-        PCBuild pcBuild = new PCBuilder("My Custom PC")
-                .setCPU(cpu)
-                .setMotherboard(motherboard)
-                .setGPU(gpu)
-                .setRAM(ram)
-                .addStorage(storage)
-                .build();
+        PCBuild pcBuild = new PCBuilder("My Custom PC").build();
+
+        List<String> notifications = new ArrayList<>();
+
+        BuildSubject subject = new BuildSubject();
+
+        subject.attach(new PriceAlertObserver());
+
+        subject.attach((build, changeMessage) -> {
+            notifications.add(
+                    "Build updated: " + changeMessage
+            );
+
+            if (build.getBaseTotal() > 1000) {
+                notifications.add(
+                        "Price alert: Base component cost exceeds $1000!"
+                );
+            }
+        });
+
+        addComponent(pcBuild, cpu, subject);
+        addComponent(pcBuild, motherboard, subject);
+        addComponent(pcBuild, gpu, subject);
+        addComponent(pcBuild, ram, subject);
+        addComponent(pcBuild, storage, subject);
 
         boolean compatible = facade.validateCompatibility(pcBuild);
 
@@ -104,6 +123,7 @@ public class BuildController {
         if (months > 0) {
             double monthlyPartsPayment =
                     strategy.calculatePrice(baseTotal);
+
             partsTotal = monthlyPartsPayment * months;
         } else {
             partsTotal = strategy.calculatePrice(baseTotal);
@@ -126,6 +146,24 @@ public class BuildController {
                 ? total / months
                 : 0;
 
+        if (request.assembly()) {
+            notifications.add("Service selected: Professional PC Assembly");
+        }
+
+        if (request.extendedWarranty()) {
+            notifications.add("Service selected: Extended Warranty");
+        }
+
+        notifications.add(
+                compatible
+                        ? "Compatibility check passed."
+                        : "Compatibility warning: CPU and motherboard sockets do not match."
+        );
+
+        notifications.add(
+                "Pricing strategy applied: " + strategy.getStrategyName()
+        );
+
         String message = compatible
                 ? "CPU and motherboard are compatible!"
                 : "Incompatible components: CPU and motherboard sockets do not match!";
@@ -140,7 +178,20 @@ public class BuildController {
                 strategy.getStrategyName(),
                 pcBuild.getComponents().size(),
                 round(servicesCost),
-                service.getDescription()
+                service.getDescription(),
+                notifications
+        );
+    }
+
+    private void addComponent(
+            PCBuild build,
+            Component component,
+            BuildSubject subject
+    ) {
+        build.addComponent(component);
+        subject.notifyObservers(
+                build,
+                component.getName() + " selected"
         );
     }
 

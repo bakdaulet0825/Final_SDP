@@ -1,4 +1,3 @@
-
 const componentCategories = [
     "cpu",
     "gpu",
@@ -75,12 +74,29 @@ async function loadComponents() {
 
     } catch (error) {
         const result = document.getElementById("result");
-
         result.textContent = "Failed to load components!";
         result.style.color = "#ef4444";
-
         console.error(error);
     }
+}
+
+function showNotifications(messages) {
+    const list = document.getElementById("notifications");
+    list.innerHTML = "";
+
+    if (!messages || messages.length === 0) {
+        const item = document.createElement("li");
+        item.textContent = "No notifications.";
+        list.appendChild(item);
+        return;
+    }
+
+    messages.forEach(message => {
+        const item = document.createElement("li");
+        item.textContent = message;
+        item.style.marginBottom = "8px";
+        list.appendChild(item);
+    });
 }
 
 async function updateConfiguration() {
@@ -121,6 +137,10 @@ async function updateConfiguration() {
 
         result.textContent = "Please select all components.";
         result.style.color = "#facc15";
+
+        showNotifications([
+            "Please select all components to create your build."
+        ]);
         return;
     }
 
@@ -161,6 +181,8 @@ async function updateConfiguration() {
         result.textContent = data.message;
         result.style.color = data.compatible ? "#22c55e" : "#ef4444";
 
+        showNotifications(data.notifications);
+
     } catch (error) {
         if (requestId !== latestRequest) return;
 
@@ -171,6 +193,7 @@ async function updateConfiguration() {
         result.textContent = "Backend calculation failed!";
         result.style.color = "#ef4444";
 
+        showNotifications(["Unable to update configuration."]);
         console.error(error);
     }
 }
