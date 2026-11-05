@@ -15,7 +15,15 @@ import java.util.UUID;
 public class BuildStorageService {
 
     private final ObjectMapper mapper = new ObjectMapper();
-    private final Path storagePath = Path.of("data", "builds.json");
+    private final Path storagePath;
+
+    public BuildStorageService() {
+        this(Path.of("data", "builds.json"));
+    }
+
+    BuildStorageService(Path storagePath) {
+        this.storagePath = storagePath;
+    }
 
     public record SavedBuild(
             String id,
