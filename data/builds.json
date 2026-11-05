@@ -1,1 +1,12 @@
-[ ]
+[ {
+  "id" : "54baec7a-f48d-42bb-bd20-940f6f9bf289",
+  "name" : "My Custom PC",
+  "cpu" : "cpu1",
+  "gpu" : "gpu2",
+  "motherboard" : "mb1",
+  "ram" : "ram2",
+  "storage" : "ssd3",
+  "pricingStrategy" : "installment6",
+  "assembly" : true,
+  "extendedWarranty" : true
+} ]

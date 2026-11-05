@@ -354,3 +354,48 @@ function calculatePrice() {
 }
 
 document.addEventListener("DOMContentLoaded", loadComponents);
+
+async function exportReport() {
+    const selection = getSelection();
+
+    if (!isComplete(selection)) {
+        storageStatus("Please select all components first.", false);
+        return;
+    }
+
+    const buildName = document.getElementById("buildName").value.trim();
+
+    try {
+        const response = await fetch("/api/export-report", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: buildName || "My Custom PC",
+                ...selection
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error("Failed to generate report.");
+        }
+
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "build-report.txt";
+
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+
+        URL.revokeObjectURL(url);
+
+        storageStatus("Report exported successfully!");
+    } catch (error) {
+        storageStatus(error.message, false);
+    }
+}
