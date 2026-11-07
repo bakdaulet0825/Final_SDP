@@ -1,22 +1,50 @@
 package com.setupbuilder;
 
 public class ComponentFactory {
-    public static Component createComponent(String type, String id, String name, double price, String extraParam) {
+
+    public static Component createComponent(
+            String type,
+            String id,
+            String name,
+            double price,
+            String extraParam
+    ) {
+        ComponentCreator creator;
+
         switch (type.toUpperCase()) {
             case "CPU":
-                return new Component(id, name, "CPU", price, extraParam); // extraParam = socket
+                creator = new CPUCreator();
+                break;
+
             case "MOTHERBOARD":
-                return new Component(id, name, "Motherboard", price, extraParam); // extraParam = socket
+                creator = new MotherboardCreator();
+                break;
+
             case "GPU":
-                return new Component(id, name, "GPU", price, "");
+                creator = new GenericComponentCreator("GPU");
+                break;
+
             case "RAM":
-                return new Component(id, name, "RAM", price, "");
+                creator = new GenericComponentCreator("RAM");
+                break;
+
             case "STORAGE":
-                return new Component(id, name, "Storage", price, "");
+                creator = new GenericComponentCreator("Storage");
+                break;
+
             case "PSU":
-                return new Component(id, name, "PowerSupply", price, "");
+                creator = new GenericComponentCreator("PowerSupply");
+                break;
+
             default:
-                return new Component(id, name, type, price, extraParam);
+                creator = new GenericComponentCreator(type);
         }
+
+        return creator.createComponent(
+                id,
+                name,
+                price,
+                extraParam
+        );
     }
 }

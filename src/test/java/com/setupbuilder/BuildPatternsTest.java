@@ -10,8 +10,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class BuildPatternsTest {
 
     private Component component(
-            String id, String name, String type,
-            double price, String socket
+            String id,
+            String name,
+            String type,
+            double price,
+            String socket
     ) {
         return ComponentFactory.createComponent(
                 type, id, name, price, socket
@@ -65,35 +68,76 @@ class BuildPatternsTest {
     }
 
     @Test
+    void factoryMethodCreatesCorrectComponents() {
+        ComponentCreator cpuCreator = new CPUCreator();
+        ComponentCreator motherboardCreator = new MotherboardCreator();
+
+        Component cpu = cpuCreator.createComponent(
+                "cpu1",
+                "Intel Core i5-12400F",
+                150.0,
+                "LGA1700"
+        );
+
+        Component motherboard = motherboardCreator.createComponent(
+                "mb1",
+                "ASUS PRIME B660M",
+                130.0,
+                "LGA1700"
+        );
+
+        assertEquals("CPU", cpu.getCategory());
+        assertEquals("Motherboard", motherboard.getCategory());
+
+        assertEquals(150.0, cpu.getPrice(), 0.001);
+        assertEquals(130.0, motherboard.getPrice(), 0.001);
+
+        assertEquals("LGA1700", cpu.getSocket());
+        assertEquals("LGA1700", motherboard.getSocket());
+    }
+
+    @Test
     void standardPricingReturnsBasePrice() {
         PricingStrategy strategy = new StandardPricingStrategy();
 
-        assertEquals(1000.0,
-                strategy.calculatePrice(1000), 0.001);
+        assertEquals(
+                1000.0,
+                strategy.calculatePrice(1000),
+                0.001
+        );
     }
 
     @Test
     void studentDiscountAppliesTenPercent() {
         PricingStrategy strategy = new StudentDiscountStrategy();
 
-        assertEquals(900.0,
-                strategy.calculatePrice(1000), 0.001);
+        assertEquals(
+                900.0,
+                strategy.calculatePrice(1000),
+                0.001
+        );
     }
 
     @Test
     void sixMonthInstallmentCalculatesPayment() {
         PricingStrategy strategy = new InstallmentPlanStrategy(6);
 
-        assertEquals(175.0,
-                strategy.calculatePrice(1000), 0.001);
+        assertEquals(
+                175.0,
+                strategy.calculatePrice(1000),
+                0.001
+        );
     }
 
     @Test
     void twelveMonthInstallmentCalculatesPayment() {
         PricingStrategy strategy = new InstallmentPlanStrategy(12);
 
-        assertEquals(1120.0 / 12.0,
-                strategy.calculatePrice(1000), 0.001);
+        assertEquals(
+                1120.0 / 12.0,
+                strategy.calculatePrice(1000),
+                0.001
+        );
     }
 
     @Test
@@ -125,9 +169,11 @@ class BuildPatternsTest {
         SetupConfiguratorFacade facade =
                 new SetupConfiguratorFacade();
 
-        assertTrue(facade.validateCompatibility(
-                createCompatibleBuild()
-        ));
+        assertTrue(
+                facade.validateCompatibility(
+                        createCompatibleBuild()
+                )
+        );
     }
 
     @Test
