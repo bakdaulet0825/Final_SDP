@@ -1,3 +1,4 @@
+
 const componentCategories = [
     "cpu", "gpu", "motherboard", "ram", "storage"
 ];

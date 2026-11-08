@@ -1,4 +1,3 @@
-
 package com.setupbuilder;
 
 import org.springframework.boot.SpringApplication;

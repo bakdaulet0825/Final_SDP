@@ -1,201 +1,367 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Build Your Setup</title>
+    <meta name="theme-color" content="#080c17">
+    <title>Build Your Setup | Custom PC Configurator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="ambient ambient-one" aria-hidden="true"></div>
+<div class="ambient ambient-two" aria-hidden="true"></div>
 
-<header>
-    <div class="logo">BUILD<span>YOUR</span>SETUP</div>
+<header class="site-header">
+    <a class="logo" href="#home">
+        <span class="logo-symbol">◈</span>
+        BUILD<span>YOUR</span>SETUP<span class="logo-dot">.</span>
+    </a>
+
     <nav>
-        <a href="#">Home</a>
+        <a href="#home">Home</a>
         <a href="#builder">PC Builder</a>
         <a href="#about">About</a>
     </nav>
-    <button class="header-btn" onclick="checkBackend()">Backend Status</button>
+
+    <button class="header-btn" type="button" onclick="checkBackend()">
+        <span class="status-dot"></span>
+        Backend Status
+    </button>
 </header>
 
-<section class="hero">
-    <div class="hero-content">
-        <p class="subtitle">CUSTOM PC CONFIGURATOR</p>
-        <h1>BUILD YOUR<br><span>PERFECT SETUP</span></h1>
-        <p class="description">
-            Choose your components, check compatibility
-            and create your dream PC.
-        </p>
-        <a href="#builder" class="main-btn">START BUILDING →</a>
-    </div>
-</section>
-
-<section class="builder" id="builder">
-    <h2>Build Your PC</h2>
-    <p class="section-description">Choose your components</p>
-
-    <div class="builder-layout">
-        <div class="components">
-
-            <div class="component-card">
-                <label for="cpu">Processor (CPU)</label>
-                <select id="cpu">
-                    <option value="">Select CPU</option>
-                </select>
+<main>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                THE NEXT GENERATION PC BUILDER
             </div>
 
-            <div class="component-card">
-                <label for="gpu">Graphics Card (GPU)</label>
-                <select id="gpu">
-                    <option value="">Select GPU</option>
-                </select>
+            <h1>BUILD BEYOND<br><span>LIMITS.</span></h1>
+
+            <p class="description">
+                Your perfect setup starts here. Choose powerful components,
+                check compatibility, and bring your dream PC to life.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#builder" class="main-btn">
+                    Start your build <span>↗</span>
+                </a>
+                <a href="#how-it-works" class="secondary-btn">
+                    How it works <span>→</span>
+                </a>
             </div>
 
-            <div class="component-card">
-                <label for="motherboard">Motherboard</label>
-                <select id="motherboard">
-                    <option value="">Select Motherboard</option>
-                </select>
+            <div class="hero-stats">
+                <div><strong>06</strong><span>Design patterns</span></div>
+                <div><strong>17</strong><span>Automated tests</span></div>
+                <div><strong>100%</strong><span>Your configuration</span></div>
             </div>
+        </div>
 
-            <div class="component-card">
-                <label for="ram">Memory (RAM)</label>
-                <select id="ram">
-                    <option value="">Select RAM</option>
-                </select>
+        <div class="hero-visual" aria-hidden="true">
+            <div class="visual-glow"></div>
+            <div class="pc-case">
+                <div class="case-top"></div>
+                <div class="case-glass">
+                    <div class="fan fan-one"><i></i></div>
+                    <div class="fan fan-two"><i></i></div>
+                    <div class="gpu-bar"></div>
+                    <div class="motherboard-art"></div>
+                    <div class="light-strip"></div>
+                </div>
+                <div class="case-base"></div>
             </div>
-
-            <div class="component-card">
-                <label for="storage">Storage</label>
-                <select id="storage">
-                    <option value="">Select Storage</option>
-                </select>
+            <div class="floating-chip chip-top">
+                <span>✦</span> BUILT FOR PERFORMANCE
             </div>
-
-            <div class="component-card">
-                <label for="pricingStrategy">Pricing Strategy</label>
-                <select id="pricingStrategy">
-                    <option value="standard">Standard Price</option>
-                    <option value="student">Student Discount (-10%)</option>
-                    <option value="installment6">Installment Plan (6 Months)</option>
-                    <option value="installment12">Installment Plan (12 Months)</option>
-                </select>
+            <div class="floating-chip chip-bottom">
+                <span>●</span> YOUR BUILD. YOUR RULES.
             </div>
+        </div>
+    </section>
 
-            <div class="component-card">
-                <label>Additional Services</label>
+    <section class="steps" id="how-it-works">
+        <div class="step">
+            <span class="step-index">01</span>
+            <div>
+                <strong>Choose components</strong>
+                <p>Pick the hardware that fits your needs.</p>
+            </div>
+        </div>
 
-                <div class="service-option">
-                    <label for="assembly">
+        <div class="step">
+            <span class="step-index">02</span>
+            <div>
+                <strong>Customize pricing</strong>
+                <p>Choose a payment plan and extras.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-index">03</span>
+            <div>
+                <strong>Save your setup</strong>
+                <p>Keep, edit, or export your PC build.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="builder" id="builder">
+        <div class="section-top">
+            <div>
+                <p class="section-kicker">YOUR NEXT BUILD STARTS HERE</p>
+                <h2>PC <span>Configurator</span></h2>
+                <p class="section-description">
+                    Select your hardware and watch your setup come together.
+                </p>
+            </div>
+            <span class="section-tag">CUSTOM BUILD STUDIO</span>
+        </div>
+
+        <div class="builder-layout">
+            <div class="components panel">
+                <div class="panel-heading">
+                    <div>
+                        <span class="panel-label">STEP 01 / HARDWARE</span>
+                        <h3>Choose your components</h3>
+                    </div>
+                    <span class="panel-icon">⌘</span>
+                </div>
+
+                <div class="component-grid">
+                    <div class="component-card">
+                        <div class="component-title">
+                            <span class="component-icon">▣</span>
+                            <div>
+                                <label for="cpu">Processor <span>(CPU)</span></label>
+                                <small>The brain of your PC</small>
+                            </div>
+                        </div>
+                        <select id="cpu">
+                            <option value="">Select CPU</option>
+                        </select>
+                    </div>
+
+                    <div class="component-card">
+                        <div class="component-title">
+                            <span class="component-icon">◈</span>
+                            <div>
+                                <label for="gpu">Graphics Card <span>(GPU)</span></label>
+                                <small>Power your visuals</small>
+                            </div>
+                        </div>
+                        <select id="gpu">
+                            <option value="">Select GPU</option>
+                        </select>
+                    </div>
+
+                    <div class="component-card">
+                        <div class="component-title">
+                            <span class="component-icon">▤</span>
+                            <div>
+                                <label for="motherboard">Motherboard</label>
+                                <small>Connect everything</small>
+                            </div>
+                        </div>
+                        <select id="motherboard">
+                            <option value="">Select Motherboard</option>
+                        </select>
+                    </div>
+
+                    <div class="component-card">
+                        <div class="component-title">
+                            <span class="component-icon">▥</span>
+                            <div>
+                                <label for="ram">Memory <span>(RAM)</span></label>
+                                <small>Keep things running fast</small>
+                            </div>
+                        </div>
+                        <select id="ram">
+                            <option value="">Select RAM</option>
+                        </select>
+                    </div>
+
+                    <div class="component-card">
+                        <div class="component-title">
+                            <span class="component-icon">▰</span>
+                            <div>
+                                <label for="storage">Storage</label>
+                                <small>Space for your world</small>
+                            </div>
+                        </div>
+                        <select id="storage">
+                            <option value="">Select Storage</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="config-divider"></div>
+
+                <div class="panel-heading compact">
+                    <div>
+                        <span class="panel-label">STEP 02 / PERSONALIZE</span>
+                        <h3>Make it yours</h3>
+                    </div>
+                </div>
+
+                <div class="component-card pricing-card">
+                    <div class="component-title">
+                        <span class="component-icon">＄</span>
+                        <div>
+                            <label for="pricingStrategy">Pricing Strategy</label>
+                            <small>Pick how you'd like to pay</small>
+                        </div>
+                    </div>
+
+                    <select id="pricingStrategy">
+                        <option value="standard">Standard Price</option>
+                        <option value="student">Student Discount (-10%)</option>
+                        <option value="installment6">Installment Plan (6 Months)</option>
+                        <option value="installment12">Installment Plan (12 Months)</option>
+                    </select>
+                </div>
+
+                <div class="services-block">
+                    <div class="services-heading">
+                        OPTIONAL UPGRADES <span>ADD-ONS</span>
+                    </div>
+
+                    <label class="service-option" for="assembly">
+                        <span class="service-symbol">⚙</span>
+                        <span class="service-text">
+                <strong>Professional PC Assembly</strong>
+                <small>Expert-built and ready to go</small>
+              </span>
+                        <span class="service-price">+$29.99</span>
                         <input type="checkbox" id="assembly">
-                        Professional PC Assembly (+$29.99)
                     </label>
-                </div>
 
-                <div class="service-option">
-                    <label for="extendedWarranty">
+                    <label class="service-option" for="extendedWarranty">
+                        <span class="service-symbol">◇</span>
+                        <span class="service-text">
+                <strong>2-Year Extended Warranty</strong>
+                <small>Extra peace of mind</small>
+              </span>
+                        <span class="service-price">+$49.99</span>
                         <input type="checkbox" id="extendedWarranty">
-                        2-Year Extended Warranty (+$49.99)
                     </label>
                 </div>
+
+                <div class="primary-actions">
+                    <button class="calculate-btn" type="button"
+                            onclick="updateConfiguration()">
+                        ⚡ Calculate Price <span>↗</span>
+                    </button>
+                    <button class="calculate-btn export-btn" type="button"
+                            onclick="exportReport()">
+                        ⇩ Export Report <span>↗</span>
+                    </button>
+                </div>
             </div>
 
-            <button class="calculate-btn" onclick="updateConfiguration()">
-                CALCULATE PRICE
-            </button>
-            <button class="calculate-btn" onclick="exportReport()">
-                EXPORT REPORT
-            </button>
-        </div>
-
-        <div class="summary">
-            <h3>Your Configuration</h3>
-
-            <div class="summary-line">
-                <span>CPU</span>
-                <span id="cpu-price">$0.00</span>
-            </div>
-
-            <div class="summary-line">
-                <span>GPU</span>
-                <span id="gpu-price">$0.00</span>
-            </div>
-
-            <div class="summary-line">
-                <span>Motherboard</span>
-                <span id="motherboard-price">$0.00</span>
-            </div>
-
-            <div class="summary-line">
-                <span>RAM</span>
-                <span id="ram-price">$0.00</span>
-            </div>
-
-            <div class="summary-line">
-                <span>Storage</span>
-                <span id="storage-price">$0.00</span>
-            </div>
-
-            <div class="summary-line">
-                <span>Additional Services</span>
-                <span id="services-cost">$0.00</span>
-            </div>
-
-            <div class="total">
-                <span>Total Price</span>
-                <h2 id="total">$0.00</h2>
-            </div>
-
-            <div class="summary-line">
-                <span>Pricing Strategy</span>
-                <span id="strategy-name">Standard Price</span>
-            </div>
-
-            <div class="summary-line" id="monthly-row" style="display: none;">
-                <span>Monthly Payment</span>
-                <span id="monthly-payment">$0.00</span>
-            </div>
-
-            <p id="result">Please select all components.</p>
-            <div class="component-card" id="saved-build-panel">
-                <h3>Saved PC Builds</h3>
-
-                <label for="buildName">Build Name</label>
-                <input type="text" id="buildName"
-                       placeholder="Enter build name"
-                       value="My Custom PC">
-
-                <div class="saved-build-actions">
-                    <button type="button" onclick="saveBuild()">SAVE BUILD</button>
-                    <button type="button" onclick="updateSavedBuild()">UPDATE BUILD</button>
+            <aside class="summary panel">
+                <div class="summary-header">
+                    <div>
+                        <span class="panel-label">LIVE BUILD OVERVIEW</span>
+                        <h3>Your Configuration</h3>
+                    </div>
+                    <span class="live-badge"><span></span> LIVE</span>
                 </div>
 
-                <label for="savedBuilds">Saved Configurations</label>
-                <select id="savedBuilds">
-                    <option value="">Select saved build</option>
-                </select>
-
-                <div class="saved-build-actions">
-                    <button type="button" onclick="loadSavedBuild()">LOAD BUILD</button>
-                    <button type="button" onclick="deleteSavedBuild()">DELETE BUILD</button>
+                <div class="summary-list">
+                    <div class="summary-line">
+                        <span>Processor</span><strong id="cpu-price">$0.00</strong>
+                    </div>
+                    <div class="summary-line">
+                        <span>Graphics Card</span><strong id="gpu-price">$0.00</strong>
+                    </div>
+                    <div class="summary-line">
+                        <span>Motherboard</span>
+                        <strong id="motherboard-price">$0.00</strong>
+                    </div>
+                    <div class="summary-line">
+                        <span>Memory</span><strong id="ram-price">$0.00</strong>
+                    </div>
+                    <div class="summary-line">
+                        <span>Storage</span><strong id="storage-price">$0.00</strong>
+                    </div>
+                    <div class="summary-line">
+                        <span>Additional Services</span>
+                        <strong id="services-cost">$0.00</strong>
+                    </div>
                 </div>
 
-                <p id="storageMessage" role="status"></p>
-            </div>
+                <div class="total">
+                    <span>ESTIMATED TOTAL</span>
+                    <h2 id="total">$0.00</h2>
+                    <p>Final price based on your selection</p>
+                </div>
 
-            <div class="component-card" style="margin-top: 25px;">
-                <h3>Build Notifications</h3>
-                <ul id="notifications">
-                    <li>Select all components to view notifications.</li>
-                </ul>
-            </div>
+                <div class="summary-line strategy-line">
+                    <span>Pricing Strategy</span>
+                    <strong id="strategy-name">Standard Price</strong>
+                </div>
+
+                <div class="summary-line" id="monthly-row" style="display:none">
+                    <span>Monthly Payment</span>
+                    <strong id="monthly-payment">$0.00</strong>
+                </div>
+
+                <p id="result" role="status">Please select all components.</p>
+
+                <div class="saved-panel" id="saved-build-panel">
+                    <div class="subpanel-title">
+                        <span>▣</span><h3>Saved PC Builds</h3>
+                    </div>
+
+                    <label for="buildName" class="field-label">BUILD NAME</label>
+                    <input type="text" id="buildName"
+                           placeholder="Enter build name"
+                           value="My Custom PC">
+
+                    <div class="saved-build-actions">
+                        <button type="button" onclick="saveBuild()">＋ Save Build</button>
+                        <button type="button" onclick="updateSavedBuild()">↻ Update</button>
+                    </div>
+
+                    <label for="savedBuilds" class="field-label">
+                        YOUR SAVED CONFIGURATIONS
+                    </label>
+                    <select id="savedBuilds">
+                        <option value="">Select saved build</option>
+                    </select>
+
+                    <div class="saved-build-actions">
+                        <button type="button" onclick="loadSavedBuild()">↧ Load Build</button>
+                        <button type="button" class="delete-btn"
+                                onclick="deleteSavedBuild()">× Delete</button>
+                    </div>
+
+                    <p id="storageMessage" role="status"></p>
+                </div>
+
+                <div class="notifications-panel">
+                    <div class="subpanel-title">
+                        <span>◉</span><h3>Build Notifications</h3>
+                    </div>
+                    <ul id="notifications">
+                        <li>Select all components to view notifications.</li>
+                    </ul>
+                </div>
+            </aside>
         </div>
-    </div>
-</section>
+    </section>
+</main>
 
 <footer id="about">
-    BUILD YOUR SETUP © 2026
-    <p>Custom PC Builder Project</p>
+    <div class="footer-brand">◈ BUILD<span>YOUR</span>SETUP.</div>
+    <p>Design your build. Own your performance.</p>
+    <small>
+        © 2026 Build Your Setup · Software Design Patterns Final Project
+    </small>
 </footer>
 
 <script src="script.js"></script>
