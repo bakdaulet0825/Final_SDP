@@ -1,1 +1,12 @@
-[ ]
+[ {
+  "id" : "cce1a5fd-d07e-42c2-802b-e0008c6b727c",
+  "name" : "Gaming PC",
+  "cpu" : "cpu2",
+  "gpu" : "gpu3",
+  "motherboard" : "mb1",
+  "ram" : "ram2",
+  "storage" : "ssd2",
+  "pricingStrategy" : "standard",
+  "assembly" : false,
+  "extendedWarranty" : false
+} ]
