@@ -3,9 +3,9 @@ package com.setupbuilder;
 public class Component {
     private String id;
     private String name;
-    private String category; // CPU, GPU, RAM, Storage, PowerSupply, Motherboard
+    private String category;
     private double price;
-    private String socket; // Compatibility field (e.g. AM5, LGA1700)
+    private String socket;
 
     public Component(String id, String name, String category, double price, String socket) {
         this.id = id;
